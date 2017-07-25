@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="material-design-icons-3.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.bower/material-design-icons/3.0.1/d30c955d9277215ccfe407a18198ffbf70f3fe3f/material-design-icons-3.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.webjars.bower/material-design-icons/3.0.1/b04f3ee8f5e43fa3b162981b50bb72fe1acabb33/material-design-icons-3.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
