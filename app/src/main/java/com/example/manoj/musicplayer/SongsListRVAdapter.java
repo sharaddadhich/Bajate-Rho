@@ -47,7 +47,7 @@ public class SongsListRVAdapter extends RecyclerView.Adapter<SongsListRVAdapter.
         SongsList thisSong = songs.get(position);
         holder.tvTitle.setText(thisSong.getTitle());
         holder.tvSinger.setText(thisSong.getArtist());
-        holder.tvDuration.setText(thisSong.getDuration().toString());
+        holder.tvDuration.setText(thisSong.getMinlength().toString()+":"+thisSong.getSeclength().toString());
 
 
         holder.thisView.setOnClickListener(new View.OnClickListener() {

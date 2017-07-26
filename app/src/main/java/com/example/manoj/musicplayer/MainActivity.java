@@ -3,7 +3,9 @@ package com.example.manoj.musicplayer;
 import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
     SongsListRVAdapter songsListRVAdapter;
     RecyclerView rvSongsList;
 
-    ArrayList<SongsList> songsLists = new ArrayList<SongsList>();
+    public static ArrayList<SongsList> songsLists = new ArrayList<SongsList>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        getSongList();
         int premcode;
         premcode = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
 
@@ -49,16 +52,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onViewCiclked(int position) {
 
-                SongsList thisSong = songsLists.get(position);
-                Bundle thisBumdle = new Bundle();
-                thisBumdle.putString("Title",thisSong.Title);
-                thisBumdle.putString("SongPath",thisSong.songPath);
-                thisBumdle.putString("ArtistName",thisSong.Artist);
+//                ArrayList<String> Paths = new ArrayList<>();
+//                SongsList thisSong = songsLists.get(position);
+//                Bundle thisBumdle = new Bundle();
+//                thisBumdle.putString("Title",thisSong.Title);
+//                thisBumdle.putString("SongPath",thisSong.songPath);
+//                thisBumdle.putString("ArtistName",thisSong.Artist);
+//                thisBumdle.putString("Minute",thisSong.getMinlength().toString());
+//                thisBumdle.putString("Second",thisSong.getSeclength().toString());
                 Intent i = new Intent(MainActivity.this,PlayMusicActivity.class);
 
-                i.putExtra("Info",thisBumdle);
+//               i.putExtra("Info",thisBumdle);
 
-                startActivity(i);
+//                Bundle data = new Bundle();
+  //              data.putSerializable("data",(Serializable)songsLists);
+//                data.putInt("position",position);
+//                i.putExtra("bundle",data);
+//                startActivity(i);
                 if(count==0)
                 {
                     count =1;
@@ -67,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
                 {
                     PlayMusicActivity.mp.release();
                 }
+                i.putExtra("position",position);
+                startActivity(i);
+
+
+
 
             }
         });
@@ -104,9 +119,17 @@ public class MainActivity extends AppCompatActivity {
                     int albumId = cursor.getInt(cursor
                             .getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
 
-                    int Duration = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
 
-                    songsLists.add(new SongsList(name,artistName,songPath,albumName,artistId,albumId,Duration));
+
+                    Integer Dur = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION))/1000;
+                    int min = Dur/60;
+                    int remSec = Dur - min*60;
+                    String x = (String.valueOf(remSec));
+                    if(x.length()==1)
+                    {
+                        x = "0"+x;
+                    }
+                    songsLists.add(new SongsList(name,artistName,songPath,albumName,artistId,albumId,min,x));
 
                 } while (cursor.moveToNext());
             }
@@ -127,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "onResume: Yes Function Will Be Called");
         
-        getSongList();
+
 
     }
 }

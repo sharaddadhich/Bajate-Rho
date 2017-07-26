@@ -6,27 +6,36 @@ package com.example.manoj.musicplayer;
 
 public class SongsList {
 
-    String Title,Artist,songPath,Albumname;
+    String Title,Artist,songPath,Albumname, seclength;
     Integer ArtistId,AlbumId;
-    Integer Duration;
+    Integer minlength;
 
     public SongsList(String title, String artist, String songPath, String albumname, Integer artistId, Integer albumId,
-                     Integer Duration) {
+                     int min,String sec) {
         Title = title;
         Artist = artist;
         this.songPath = songPath;
         Albumname = albumname;
         ArtistId = artistId;
         AlbumId = albumId;
-        this.Duration = Duration;
+        this.minlength =min;
+        this.seclength = sec;
     }
 
-    public Integer getDuration() {
-        return Duration;
+    public Integer getMinlength() {
+        return minlength;
     }
 
-    public void setDuration(Integer duration) {
-        Duration = duration;
+    public void setMinlength(Integer minlength) {
+        this.minlength = minlength;
+    }
+
+    public String getSeclength() {
+        return seclength;
+    }
+
+    public void setSeclength(String seclength) {
+        this.seclength = seclength;
     }
 
     public String getTitle() {
