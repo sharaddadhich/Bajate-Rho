@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class SongsListRVAdapter extends RecyclerView.Adapter<SongsListRVAdapter.SongListHolder> {
 
     public interface OnviewClickedListner{
-        void onViewCiclked(int position);
+        void onViewCiclked(String SongPath);
     }
 
 
@@ -44,9 +45,18 @@ public class SongsListRVAdapter extends RecyclerView.Adapter<SongsListRVAdapter.
     @Override
     public void onBindViewHolder(SongListHolder holder, final int position) {
 
-        SongsList thisSong = songs.get(position);
+        final SongsList thisSong = songs.get(position);
         holder.tvTitle.setText(thisSong.getTitle());
         holder.tvSinger.setText(thisSong.getArtist());
+        if(thisSong.bitmap!=null)
+        {
+            holder.ivPhoto.setImageBitmap(thisSong.getBitmap());
+        }
+        else
+        {
+            holder.ivPhoto.setImageResource(R.drawable.default_play_image);
+        }
+
         holder.tvDuration.setText(thisSong.getMinlength().toString()+":"+thisSong.getSeclength().toString());
 
 
@@ -54,10 +64,15 @@ public class SongsListRVAdapter extends RecyclerView.Adapter<SongsListRVAdapter.
             @Override
             public void onClick(View v) {
                 Log.d("23456", "onClick:  View is Clicked");
-                onviewClickedListner.onViewCiclked(position);
+                onviewClickedListner.onViewCiclked(thisSong.getSongPath());
             }
         });
 
+    }
+    public void SongListUpdated(ArrayList<SongsList> temp)
+    {
+        this.songs = temp;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -69,6 +84,7 @@ public class SongsListRVAdapter extends RecyclerView.Adapter<SongsListRVAdapter.
     {
         TextView tvTitle,tvSinger,tvDuration;
         View thisView;
+        ImageView ivPhoto;
 
         public SongListHolder(View itemView) {
             super(itemView);
@@ -76,6 +92,7 @@ public class SongsListRVAdapter extends RecyclerView.Adapter<SongsListRVAdapter.
             tvTitle = (TextView) itemView.findViewById(R.id.tv_SongTitle);
             tvSinger = (TextView) itemView.findViewById(R.id.tv_Singer);
             tvDuration = (TextView) itemView.findViewById(R.id.tv_Duration);
+            ivPhoto = (ImageView) itemView.findViewById(R.id.iv_SongImage);
             thisView = itemView;
 
         }

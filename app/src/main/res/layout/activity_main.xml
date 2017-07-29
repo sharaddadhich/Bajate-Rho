@@ -5,16 +5,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.manoj.musicplayer.MainActivity">
+    tools:context="com.example.manoj.musicplayer.MainActivity"
+    android:background="@color/ForList">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="BaJate Rho"
-        android:textColor="@android:color/white"
-        android:background="@android:color/darker_gray"
-        android:textSize="20sp"
-        android:gravity="center"/>
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textSize="16sp"
+            android:id="@+id/et_Serach"
+            android:cursorVisible="false"
+            android:layout_weight="3"
+            android:background="@color/ForList"
+            android:hint="Search Here"/>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:id="@+id/btn_Search"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_search"
+            android:gravity="end"
+            android:background="@color/ForList"/>
+
+    </LinearLayout>
+
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

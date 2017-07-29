@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="lightGray">#878080</color>
+    <color name="MainActivityBackground">#C4DFE6</color>
+    <color name="ForList">#66A5AD</color>
+    <color name="MediaPlayeractivity">#66A5AD</color>
+    <color name="ForTheme">#07575B</color>
 </resources>

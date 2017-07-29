@@ -1,5 +1,7 @@
 package com.example.manoj.musicplayer;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Manoj on 7/24/2017.
  */
@@ -9,9 +11,10 @@ public class SongsList {
     String Title,Artist,songPath,Albumname, seclength;
     Integer ArtistId,AlbumId;
     Integer minlength;
+    Bitmap bitmap;
 
     public SongsList(String title, String artist, String songPath, String albumname, Integer artistId, Integer albumId,
-                     int min,String sec) {
+                     int min,String sec,Bitmap bitmap) {
         Title = title;
         Artist = artist;
         this.songPath = songPath;
@@ -20,6 +23,15 @@ public class SongsList {
         AlbumId = albumId;
         this.minlength =min;
         this.seclength = sec;
+        this.bitmap = bitmap;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public Integer getMinlength() {
