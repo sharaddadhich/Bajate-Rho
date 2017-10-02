@@ -10,3 +10,7 @@ Automatic Pause and Resume on Incoming and Outgoing Voice Calls.
 ## Key Features
 
 Media Player, Cursor, Broadcast Reciever & RecyclerView
+
+## Screenshots
+
+<img src = "https://github.com/sharaddadhich/Bajate-Rho/blob/master/MainRecyclerView1.png" width = 250>              <img src = "https://github.com/sharaddadhich/Bajate-Rho/blob/master/PlayingMusic1.png" width = 250>
